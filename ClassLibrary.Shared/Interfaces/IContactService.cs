@@ -1,6 +1,6 @@
 ﻿namespace ClassLibrary.Shared.Interfaces;
 
-internal interface IContactService
+public interface IContactService
 {
     /// <summary>
     /// Add a contact to the contact list.

@@ -1,6 +1,6 @@
 ﻿namespace ClassLibrary.Shared.Interfaces;
 
-internal interface IContact
+public interface IContact
 {
     string FirstName { get; set; }
     string LastName { get; set; }

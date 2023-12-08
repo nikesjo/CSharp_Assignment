@@ -19,7 +19,7 @@ public class ContactService : IContactService
             if (!_contacts.Any(x => x.Email == contact.Email))
             {
                 _contacts.Add(contact);
-                string json = JsonConvert.SerializeObject(contact, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
+                string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
 
                 var result = _fileService.SaveContactToFile(_filepath, json);
                 return result;

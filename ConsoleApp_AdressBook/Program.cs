@@ -1,7 +1,12 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿//using Microsoft.Extensions.Hosting;
 
 
-var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
-{
+//var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
+//{
 
-}).Build();
+//}).Build();
+using ConsoleApp_AddressBook.Services;
+
+var menuService = new MenuService();
+
+menuService.ShowMainMenu();

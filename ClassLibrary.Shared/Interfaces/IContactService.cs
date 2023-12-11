@@ -22,10 +22,4 @@ public interface IContactService
     /// <returns>Return contact if exists, if contact does not exists return null.</returns>
     IContact GetContactFromList(string email);
 
-    /// <summary>
-    /// Delete a specific contact from contact list by email.
-    /// </summary>
-    /// <param name="email">Enter the email as a string.</param>
-    /// <returns>Delete contact if exists, if contact does not exist return null.</returns>
-    IContact DeleteContactFromList(string email);
 }

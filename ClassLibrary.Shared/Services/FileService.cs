@@ -18,6 +18,24 @@ public class FileService : IFileService
         return null!;
     }
 
+    public bool RemoveContactFromFile(string filepath, string contact)
+    {
+        try
+        {
+            var existingContent = GetContentFromFile(filepath);
+            if (existingContent != null)
+            {
+                existingContent = existingContent.Replace(contact, string.Empty).Trim();
+
+                File.WriteAllText(filepath, existingContent);
+
+                return true;
+            }
+        }
+        catch (Exception ex) { Debug.WriteLine(ex.Message); }
+        return false;
+    }
+
     public bool SaveContactToFile(string filepath, string contact)
     {
         try

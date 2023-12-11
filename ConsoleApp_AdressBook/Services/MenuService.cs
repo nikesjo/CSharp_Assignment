@@ -1,7 +1,6 @@
 ﻿using ClassLibrary.Shared.Interfaces;
 using ClassLibrary.Shared.Models;
 using ClassLibrary.Shared.Services;
-using Microsoft.Extensions.Configuration;
 
 namespace ConsoleApp_AddressBook.Services;
 
@@ -17,10 +16,10 @@ public class MenuService
             Console.WriteLine("1. Add a contact");
             Console.WriteLine("2. Show all contacts");
             Console.WriteLine("3. Search a specific contact");
-            Console.WriteLine("4. Delete a specific contact");
+            Console.WriteLine("4. Remove a specific contact");
             Console.WriteLine("5. Exit");
 
-            var option = Console.ReadLine();
+            var option = Console.ReadLine(); 
 
             switch (option)
             {
@@ -34,7 +33,7 @@ public class MenuService
                     ShowContactMenu();
                     break;
                 case "4":
-                    ShowDeleteContactMenu();
+                    ShowRemoveContactMenu();
                     break;
                 case "5":
                     Environment.Exit(0);
@@ -129,8 +128,18 @@ public class MenuService
         }
     }
 
-    public void ShowDeleteContactMenu()
+    public void ShowRemoveContactMenu()
     {
+        Console.Write("Enter the email address of the contact to remove: ");
+        string emailToRemove = Console.ReadLine()!;
 
+        if (_contactService.RemoveContactFromList(emailToRemove))
+        {
+            Console.WriteLine("Contact removed successfully.");
+        }
+        else
+        {
+            Console.WriteLine("No contact was found.");
+        }
     }
 }

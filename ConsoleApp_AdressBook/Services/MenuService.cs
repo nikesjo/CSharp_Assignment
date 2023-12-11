@@ -57,6 +57,7 @@ public class MenuService : IMenuService
 
     public void AddContactMenu()
     {
+        Console.Clear();
         Console.WriteLine("### Add a contact ###\n");
 
         IContact contact = new Contact();
@@ -73,7 +74,7 @@ public class MenuService : IMenuService
         Console.Write("Enter your email: ");
         contact.Email = Console.ReadLine()!;
 
-        Console.Write("Enter your adress: ");
+        Console.Write("Enter your address: ");
         contact.Address = Console.ReadLine()!;
 
         Console.Write("Enter your postal code: ");
@@ -86,13 +87,15 @@ public class MenuService : IMenuService
 
         Console.WriteLine();
         Console.WriteLine("Contact successfully added!");
+
+        Console.WriteLine();
         Console.WriteLine("Press enter to continue...");
-        Console.Clear();
     }
 
     public void ShowAllContactsMenu()
     {
-        Console.WriteLine("### All contacts ###\n");
+        Console.Clear();
+        Console.WriteLine("### All contacts ###");
 
         var contacts = _contactService.GetContactsFromList();
 
@@ -104,9 +107,9 @@ public class MenuService : IMenuService
                 Console.WriteLine();
                 Console.WriteLine($"{count}. ");
                 Console.WriteLine($"{contact.FirstName} {contact.LastName} ");
-                Console.WriteLine($"Email: {contact.Email} Phone number: {contact.PhoneNumber}");
+                Console.WriteLine($"Phone number: {contact.PhoneNumber} ");
+                Console.WriteLine($"Email: {contact.Email} ");
                 Console.WriteLine($"Address: {contact.Address} {contact.PostalCode} {contact.City} ");
-                Console.WriteLine();
 
                 count++;
             }
@@ -114,16 +117,16 @@ public class MenuService : IMenuService
         else
         {
             Console.WriteLine("No contacts was found");
-            Console.WriteLine();
         }
 
+        Console.WriteLine();
         Console.WriteLine("Press enter to continue...");
-        Console.Clear();
     }
 
     public void ShowContactMenu()
     {
-        Console.WriteLine("### Show a specific contact ###\n");
+        Console.Clear();
+        Console.WriteLine("### Show a specific contact ###");
 
         Console.Write("Type the email address of the contact you want to retrieve: ");
         var email = Console.ReadLine();
@@ -134,25 +137,22 @@ public class MenuService : IMenuService
 
             Console.WriteLine();
             Console.WriteLine($"{contact.FirstName} {contact.LastName} ");
-            Console.WriteLine($"{contact.Email} ");
-            Console.WriteLine($"{contact.PhoneNumber} ");
-            Console.WriteLine($"{contact.Address} ");
-            Console.WriteLine($"{contact.PostalCode} ");
-            Console.WriteLine($"{contact.City} ");
-            Console.WriteLine();
+            Console.WriteLine($"Phone number: {contact.PhoneNumber} ");
+            Console.WriteLine($"Email: {contact.Email} ");
+            Console.WriteLine($"Address: {contact.Address} {contact.PostalCode} {contact.City} ");
         }
         else
         {
             Console.WriteLine("No contact was found.");
-            Console.WriteLine();
         }
 
+        Console.WriteLine();
         Console.WriteLine("Press enter to continue...");
-        Console.Clear();
     }
 
     public void ShowRemoveContactMenu()
     {
+        Console.Clear();
         Console.WriteLine("### Remove a contact ###\n");
 
         Console.Write("Enter the email address of the contact to remove: ");
@@ -165,10 +165,9 @@ public class MenuService : IMenuService
         else
         {
             Console.WriteLine("No contact was found.");
-            Console.WriteLine();
         }
 
+        Console.WriteLine();
         Console.WriteLine("Press enter to continue...");
-        Console.Clear();
     }
 }

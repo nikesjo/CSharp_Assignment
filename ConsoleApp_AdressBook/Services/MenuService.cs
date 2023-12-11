@@ -1,24 +1,31 @@
 ﻿using ClassLibrary.Shared.Interfaces;
 using ClassLibrary.Shared.Models;
 using ClassLibrary.Shared.Services;
+using ConsoleApp_AddressBook.Interfaces;
 
 namespace ConsoleApp_AddressBook.Services;
 
-public class MenuService
+public class MenuService : IMenuService
 {
-    private readonly IContactService _contactService = new ContactService();
+    private readonly IContactService _contactService;
+
+    public MenuService(IContactService contactService)
+    {
+        _contactService = contactService;
+    }
 
     public void ShowMainMenu()
     {
         while (true)
         {
-            Console.WriteLine("Menu\n");
+            Console.WriteLine("### Address Book ###\n");
             Console.WriteLine("1. Add a contact");
             Console.WriteLine("2. Show all contacts");
             Console.WriteLine("3. Search a specific contact");
             Console.WriteLine("4. Remove a specific contact");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("5. Exit\n");
 
+            Console.Write("Enter option: ");
             var option = Console.ReadLine(); 
 
             switch (option)
@@ -44,11 +51,14 @@ public class MenuService
             }
 
             Console.ReadKey();
+            Console.Clear();
         }
     }
 
     public void AddContactMenu()
     {
+        Console.WriteLine("### Add a contact ###\n");
+
         IContact contact = new Contact();
 
         Console.Write("Enter your first name: ");
@@ -73,10 +83,17 @@ public class MenuService
         contact.City = Console.ReadLine()!;
 
         _contactService.AddContactToList(contact);
+
+        Console.WriteLine();
+        Console.WriteLine("Contact successfully added!");
+        Console.WriteLine("Press enter to continue...");
+        Console.Clear();
     }
 
     public void ShowAllContactsMenu()
     {
+        Console.WriteLine("### All contacts ###\n");
+
         var contacts = _contactService.GetContactsFromList();
 
         if (contacts != null && contacts.Any())
@@ -87,11 +104,8 @@ public class MenuService
                 Console.WriteLine();
                 Console.WriteLine($"{count}. ");
                 Console.WriteLine($"{contact.FirstName} {contact.LastName} ");
-                Console.WriteLine($"{contact.Email} ");
-                Console.WriteLine($"{contact.PhoneNumber} ");
-                Console.WriteLine($"{contact.Address} ");
-                Console.WriteLine($"{contact.PostalCode} ");
-                Console.WriteLine($"{contact.City} ");
+                Console.WriteLine($"Email: {contact.Email} Phone number: {contact.PhoneNumber}");
+                Console.WriteLine($"Address: {contact.Address} {contact.PostalCode} {contact.City} ");
                 Console.WriteLine();
 
                 count++;
@@ -100,13 +114,18 @@ public class MenuService
         else
         {
             Console.WriteLine("No contacts was found");
+            Console.WriteLine();
         }
+
+        Console.WriteLine("Press enter to continue...");
+        Console.Clear();
     }
 
     public void ShowContactMenu()
     {
-        Console.Write("Type the email address of the contact you want to retrieve: ");
+        Console.WriteLine("### Show a specific contact ###\n");
 
+        Console.Write("Type the email address of the contact you want to retrieve: ");
         var email = Console.ReadLine();
 
         if (!string.IsNullOrEmpty(email))
@@ -125,11 +144,17 @@ public class MenuService
         else
         {
             Console.WriteLine("No contact was found.");
+            Console.WriteLine();
         }
+
+        Console.WriteLine("Press enter to continue...");
+        Console.Clear();
     }
 
     public void ShowRemoveContactMenu()
     {
+        Console.WriteLine("### Remove a contact ###\n");
+
         Console.Write("Enter the email address of the contact to remove: ");
         string emailToRemove = Console.ReadLine()!;
 
@@ -140,6 +165,10 @@ public class MenuService
         else
         {
             Console.WriteLine("No contact was found.");
+            Console.WriteLine();
         }
+
+        Console.WriteLine("Press enter to continue...");
+        Console.Clear();
     }
 }

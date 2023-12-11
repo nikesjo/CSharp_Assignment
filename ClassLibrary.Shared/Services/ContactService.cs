@@ -7,7 +7,13 @@ namespace ClassLibrary.Shared.Services;
 
 public class ContactService : IContactService
 {
-    private readonly IFileService _fileService = new FileService();
+    private readonly IFileService _fileService;
+
+    public ContactService(IFileService fileService)
+    {
+        _fileService = fileService;
+    }
+
     private List<IContact> _contacts = [];
     private readonly string _filepath = @"D:\Education\csharp\assignment\contactfile.json";
 

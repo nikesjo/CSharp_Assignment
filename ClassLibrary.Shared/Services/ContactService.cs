@@ -9,7 +9,7 @@ public class ContactService : IContactService
 {
     private readonly IFileService _fileService = new FileService();
     private List<IContact> _contacts = [];
-    private readonly string _filepath = @"D:\Education\csharp\assignment\myfile.json";
+    private readonly string _filepath = @"D:\Education\csharp\assignment\contactfile.json";
 
     public bool AddContactToList(IContact contact)
     {
@@ -54,5 +54,29 @@ public class ContactService : IContactService
         }
         catch (Exception ex) { Debug.WriteLine(ex.Message); }
         return null!;
+    }
+
+    public bool RemoveContactFromList(string email)
+    {
+        try
+        {
+            GetContactsFromList();
+
+            var contactToRemove = _contacts.FirstOrDefault(x => x.Email == email);
+            if (contactToRemove != null)
+            {
+                _contacts.Remove(contactToRemove);
+
+                string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
+
+                var result = _fileService.SaveContactToFile(_filepath, json);
+
+                _fileService.RemoveContactFromFile(_filepath, JsonConvert.SerializeObject(contactToRemove, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All }));
+
+                return result;
+            }
+        }
+        catch (Exception ex) { Debug.WriteLine(ex.Message); }
+        return false;
     }
 }

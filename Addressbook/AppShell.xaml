@@ -4,12 +4,17 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Addressbook"
+    
+    xmlns:views="clr-namespace:Addressbook.Views"
+    
     Shell.FlyoutBehavior="Disabled"
     Title="Addressbook">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <ShellContent Title="Home" Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
+    <ShellContent Title="Add Contact" Route="AddContactPage" ContentTemplate="{DataTemplate views.AddContactPage}" />
+    <ShellContent Title="Contact List" Route="ContactListPage" ContentTemplate="{DataTemplate views.ContactListPage}" />
+    <ShellContent Title="Contact Details" Route="ContactDetailsPage" ContentTemplate="{DataTemplate views.ContactDetailsPage}" />
+    <ShellContent Title="Remove Contact" Route="RemoveContactPage" ContentTemplate="{DataTemplate views.RemoveContactPage}" />
+    <ShellContent Title="Update Contact" Route="UpdateContactPage" ContentTemplate="{DataTemplate views.UpdateContactPage}" />
 
 </Shell>

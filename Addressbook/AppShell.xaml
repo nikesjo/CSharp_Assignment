@@ -14,7 +14,6 @@
     <ShellContent Title="Add Contact" Route="AddContactPage" ContentTemplate="{DataTemplate views.AddContactPage}" />
     <ShellContent Title="Contact List" Route="ContactListPage" ContentTemplate="{DataTemplate views.ContactListPage}" />
     <ShellContent Title="Contact Details" Route="ContactDetailsPage" ContentTemplate="{DataTemplate views.ContactDetailsPage}" />
-    <ShellContent Title="Remove Contact" Route="RemoveContactPage" ContentTemplate="{DataTemplate views.RemoveContactPage}" />
     <ShellContent Title="Update Contact" Route="UpdateContactPage" ContentTemplate="{DataTemplate views.UpdateContactPage}" />
 
 </Shell>

@@ -22,7 +22,6 @@ namespace Addressbook
             builder.Services.AddSingleton<AddContactPage>();
             builder.Services.AddSingleton<ContactListPage>();
             builder.Services.AddSingleton<ContactDetailsPage>();
-            builder.Services.AddSingleton<RemoveContactPage>();
             builder.Services.AddSingleton<UpdateContactPage>();
 
             builder.Services.AddSingleton<MainViewModel>();

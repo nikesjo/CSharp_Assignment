@@ -24,12 +24,6 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private async Task NavigateToRemove()
-    {
-        await Shell.Current.GoToAsync("");
-    }
-
-    [RelayCommand]
     private async Task NavigateToUpdate()
     {
         await Shell.Current.GoToAsync("");

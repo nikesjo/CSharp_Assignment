@@ -1,5 +1,13 @@
-﻿namespace Addressbook.ViewModels;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
-class ContactDetailsViewModel
+namespace Addressbook.ViewModels;
+
+public partial class ContactDetailsViewModel : ObservableObject
 {
+    [RelayCommand]
+    private async Task NavigateToUpdate()
+    {
+        await Shell.Current.GoToAsync("");
+    }
 }

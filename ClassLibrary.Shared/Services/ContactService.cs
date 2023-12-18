@@ -17,6 +17,8 @@ public class ContactService : IContactService
     private List<IContact> _contacts = [];
     private readonly string _filepath = @"D:\Education\csharp\assignment\contactfile.json";
 
+    public event EventHandler? ContactUpdated;
+
     public bool AddContactToList(IContact contact)
     {
         try
@@ -24,6 +26,7 @@ public class ContactService : IContactService
             if (!_contacts.Any(x => x.Email == contact.Email))
             {
                 _contacts.Add(contact);
+                ContactUpdated?.Invoke(this, EventArgs.Empty);
                 string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, Formatting = Formatting.Indented });
 
                 var result = _fileService.SaveContactToFile(_filepath, json);

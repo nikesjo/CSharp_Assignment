@@ -1,5 +1,6 @@
 ﻿using ClassLibrary.Shared.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using Contact = ClassLibrary.Shared.Models.Contact;
 
@@ -19,11 +20,15 @@ public partial class AddContactViewModel : ObservableObject
     [ObservableProperty]
     private Contact _addContactForm = new();
 
-    [ObservableProperty]
-    private ObservableCollection<Contact> _contactList = [];
+    //[ObservableProperty]
+    //private ObservableCollection<Contact> _contactList = [];
 
-    public void AddContactToList()
+    [RelayCommand]
+    private async Task AddContactToList()
     {
+        _contactService.AddContactToList(AddContactForm);
+        AddContactForm = new();
 
+        await Shell.Current.GoToAsync("..");
     }
 }

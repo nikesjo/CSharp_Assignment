@@ -1,7 +1,7 @@
-﻿using ClassLibrary.Shared.Services;
+﻿using ClassLibrary.Shared.Interfaces;
+using ClassLibrary.Shared.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Collections.ObjectModel;
 using Contact = ClassLibrary.Shared.Models.Contact;
 
 namespace Addressbook.ViewModels;
@@ -18,10 +18,7 @@ public partial class AddContactViewModel : ObservableObject
     }
 
     [ObservableProperty]
-    private Contact _addContactForm = new();
-
-    //[ObservableProperty]
-    //private ObservableCollection<Contact> _contactList = [];
+    private IContact _addContactForm = new();
 
     [RelayCommand]
     private async Task AddContactToList()

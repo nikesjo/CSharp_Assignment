@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              
              xmlns:viewmodels="clr-namespace:Addressbook.ViewModels"
-             xmlns:models="clr-namespace:ClassLibrary.Shared.Models"
+             
              x:DataType="{x:Type viewmodels:AddContactViewModel}"
              
              x:Class="Addressbook.Views.AddContactPage"

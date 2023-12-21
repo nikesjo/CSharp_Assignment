@@ -65,6 +65,20 @@ public class ContactService : IContactService
         return null!;
     }
 
+    public void UpdateContact(IContact contact)
+    {
+        try
+        {
+            var item = _contacts.FirstOrDefault(x => x.Email == contact.Email);
+            if (item != null)
+            {
+                item = contact;
+                ContactsUpdated?.Invoke(this, EventArgs.Empty);
+            }
+        }
+        catch (Exception ex) { Debug.WriteLine(ex.Message); }
+    }
+
     public void RemoveContactFromList(string email)
     {
         try
@@ -89,6 +103,4 @@ public class ContactService : IContactService
         catch (Exception ex) { Debug.WriteLine(ex.Message); }
         //return false;
     }
-
-
 }

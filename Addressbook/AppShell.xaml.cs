@@ -8,8 +8,8 @@ namespace Addressbook
         {
             InitializeComponent();
 
-            Routing.RegisterRoute(nameof(AddContactPage), typeof(AddContactPage));
             Routing.RegisterRoute(nameof(ContactListPage), typeof(ContactListPage));
+            Routing.RegisterRoute(nameof(AddContactPage), typeof(AddContactPage));
             Routing.RegisterRoute(nameof(ContactDetailsPage), typeof(ContactDetailsPage));
             Routing.RegisterRoute(nameof(UpdateContactPage), typeof(UpdateContactPage));
         }

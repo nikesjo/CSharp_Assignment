@@ -19,13 +19,17 @@ namespace Addressbook
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddSingleton<AddContactPage>();
             builder.Services.AddSingleton<ContactListPage>();
-            builder.Services.AddSingleton<ContactDetailsPage>();
-            builder.Services.AddSingleton<UpdateContactPage>();
+            builder.Services.AddSingleton<ContactListViewModel>();
 
-            builder.Services.AddSingleton<MainViewModel>();
+            builder.Services.AddSingleton<AddContactPage>();
+            builder.Services.AddSingleton<AddContactViewModel>();
+
+            builder.Services.AddSingleton<ContactDetailsPage>();
+            builder.Services.AddSingleton<ContactDetailsViewModel>();
+
+            builder.Services.AddSingleton<UpdateContactPage>();
+            builder.Services.AddSingleton<UpdateContactViewModel>();
 
             builder.Services.AddSingleton<IContactService, ContactService>();
             builder.Services.AddSingleton<IFileService, FileService>();

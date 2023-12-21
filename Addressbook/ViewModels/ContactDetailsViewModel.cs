@@ -14,7 +14,14 @@ public partial class ContactDetailsViewModel : ObservableObject
     }
 
     [ObservableProperty]
-    private IContact? _contactDetailsView;
+    private IContact? _contactDetails;
+
+    [RelayCommand]
+    private void GetContactFromList()
+    {
+        _contactService.GetContactFromList();
+        
+    }
 
     [RelayCommand]
     private async Task NavigateToUpdate(IContact contact)
@@ -31,6 +38,6 @@ public partial class ContactDetailsViewModel : ObservableObject
     private void RemoveContactFromList(IContact contact)
     {
         _contactService.RemoveContactFromList(contact);
-
+        ContactDetails =
     }
 }

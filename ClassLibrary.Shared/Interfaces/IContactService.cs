@@ -27,7 +27,7 @@ public interface IContactService
     /// </summary>
     /// <param name="email">Enter the email as a string.</param>
     /// <returns>Return true if the contact was successfully removed, or false if otherwise.</returns>
-    bool RemoveContactFromList(string email);
+    void RemoveContactFromList(string email);
 
     event EventHandler ContactsUpdated;
 }

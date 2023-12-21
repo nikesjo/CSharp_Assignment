@@ -65,7 +65,7 @@ public class ContactService : IContactService
         return null!;
     }
 
-    public bool RemoveContactFromList(string email)
+    public void RemoveContactFromList(string email)
     {
         try
         {
@@ -82,11 +82,12 @@ public class ContactService : IContactService
 
                 _fileService.RemoveContactFromFile(_filepath, JsonConvert.SerializeObject(contactToRemove, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, Formatting = Formatting.Indented }));
 
-                return result;
+                ContactsUpdated?.Invoke(this, EventArgs.Empty);
+                //return result;
             }
         }
         catch (Exception ex) { Debug.WriteLine(ex.Message); }
-        return false;
+        //return false;
     }
 
 

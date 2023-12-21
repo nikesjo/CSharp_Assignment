@@ -39,4 +39,22 @@ public partial class ContactListViewModel : ObservableObject
     {
         await Shell.Current.GoToAsync("ContactDetailsView");
     }
+
+    [RelayCommand]
+    private async Task NavigateToUpdateContact(IContact contact)
+    {
+        var parameters = new ShellNavigationQueryParameters
+        {
+            { "Contact", contact }
+        };
+
+        await Shell.Current.GoToAsync("UpdateContactView", parameters);
+    }
+
+    [RelayCommand]
+    private void RemoveContactFromList(IContact contact)
+    {
+        _contactService.RemoveContactFromList(contact.Email);
+        ContactList = new ObservableCollection<IContact>(_contactService.GetContactsFromList());
+    }
 }

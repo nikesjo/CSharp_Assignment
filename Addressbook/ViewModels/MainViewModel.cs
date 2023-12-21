@@ -13,11 +13,20 @@ public partial class MainViewModel : ObservableObject
     {
         _contactService = contactService;
 
+
+        UpdateContactList();
+
         _contactService.ContactsUpdated += (sender, e) =>
         {
-            ContactList = new ObservableCollection<IContact>(_contactService.GetContactsFromList());
+            UpdateContactList();   
         };
     }
+
+    private void UpdateContactList()
+    {
+        ContactList = new ObservableCollection<IContact>(_contactService.GetContactsFromList());
+    }
+
 
     [ObservableProperty]
     private ObservableCollection<IContact> contactList = [];

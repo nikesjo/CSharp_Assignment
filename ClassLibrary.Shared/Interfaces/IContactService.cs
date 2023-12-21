@@ -29,4 +29,5 @@ public interface IContactService
     /// <returns>Return true if the contact was successfully removed, or false if otherwise.</returns>
     bool RemoveContactFromList(string email);
 
+    event EventHandler ContactsUpdated;
 }

@@ -9,7 +9,7 @@
              Title="Update Contact">
     
     <VerticalStackLayout Margin="20">
-        <Label Text="{Binding }" VerticalOptions="Center" VerticalTextAlignment="Center" />
+        <Label Text="Contact to update:" VerticalOptions="Center" VerticalTextAlignment="Center" />
 
         <Entry Placeholder="First name" Text="{Binding UpdateContactForm.FirstName}"/>
         <Entry Placeholder="Last name" Text="{Binding UpdateContactForm.LastName}"/>

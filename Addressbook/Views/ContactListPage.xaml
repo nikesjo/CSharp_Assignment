@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              
              xmlns:viewmodels="clr-namespace:Addressbook.ViewModels"
-             xlmns:models="clr-namespace:ClassLibrary.Shared.Models;assembly=ClassLibrary.Shared.Models"
-             xlmns:models="clr-namespace:ClassLibrary.Shared.Models"
+             xmlns:models="clr-namespace:ClassLibrary.Shared.Models;assembly=ClassLibrary.Shared"
+             
              x:DataType="{x:Type viewmodels:ContactListViewModel}"
              
              x:Class="Addressbook.Views.ContactListPage"
@@ -16,15 +16,16 @@
 
         <CollectionView Grid.Row="1" ItemsSource="{Binding ContactList}">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Contact":>
+                <DataTemplate x:DataType="models:Contact">
                     <Frame BackgroundColor="Transparent" BorderColor="Transparent" Padding="10" Margin="0">
                         <Grid ColumnDefinitions="*, auto">
                             
-                            <Label Grid.Column="0" Text="Binding FirstName LastName" VerticalOptions="Center" VerticalTextAlignment="Center" />
+                            <Label Grid.Column="0" Text="{Binding FirstName}" VerticalOptions="Center" VerticalTextAlignment="Center" />
                             
                             <HorizontalStackLayout Grid.Column="1">
+                                <Button Text="Details" CommandParameter="{Binding .}" Command="{Binding Path=NavigateToContactDetailsCommand, Source={RelativeSource AncestorType={x:Type viewmodels:ContactListViewModel}}}" Margin="0,0,0,20" />
                                 <Button Text="Edit" CommandParameter="{Binding .}" Command="{Binding Path=NavigateToUpdateContactCommand, Source={RelativeSource AncestorType={x:Type viewmodels:ContactListViewModel}}}" Margin="0,0,0,20" />
-                                <Button Text="Delete" CommandParameter="{Binding .}" Command="{Binding Path=RemoveCommand, Source={RelativeSource AncestorType={x:Type viewmodels:ContactListViewModel}}}" Margin="0,0,0,20" />
+                                <Button Text="Delete" CommandParameter="{Binding .}" Command="{Binding Path=RemoveContactFromListCommand, Source={RelativeSource AncestorType={x:Type viewmodels:ContactListViewModel}}}" Margin="0,0,0,20" />
                             </HorizontalStackLayout>
                         </Grid>
                     </Frame>

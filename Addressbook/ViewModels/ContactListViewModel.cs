@@ -31,13 +31,13 @@ public partial class ContactListViewModel : ObservableObject
     [RelayCommand]
     private async Task NavigateToAddContact(IContact contact)
     {
-        await Shell.Current.GoToAsync("AddContactView");
+        await Shell.Current.GoToAsync("AddContactPage");
     }
 
     [RelayCommand]
     private async Task NavigateToContactDetails(IContact contact)
     {
-        await Shell.Current.GoToAsync("ContactDetailsView");
+        await Shell.Current.GoToAsync("ContactDetailsPage");
     }
 
     [RelayCommand]
@@ -48,7 +48,7 @@ public partial class ContactListViewModel : ObservableObject
             { "Contact", contact }
         };
 
-        await Shell.Current.GoToAsync("UpdateContactView", parameters);
+        await Shell.Current.GoToAsync("UpdateContactPage", parameters);
     }
 
     [RelayCommand]

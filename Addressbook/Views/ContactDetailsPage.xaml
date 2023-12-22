@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              
-             xlmns:viewmodels="clr-namespace:Addressbook.ViewModels"
+             xmlns:viewmodels="clr-namespace:Addressbook.ViewModels"
              x:DataType="{x:Type viewmodels:ContactDetailsViewModel}"
              
              x:Class="Addressbook.Views.ContactDetailsPage"

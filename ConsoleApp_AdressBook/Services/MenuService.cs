@@ -158,14 +158,14 @@ public class MenuService : IMenuService
         Console.Write("Enter the email address of the contact to remove: ");
         string emailToRemove = Console.ReadLine()!;
 
-        if (_contactService.RemoveContactFromList(emailToRemove))
-        {
-            Console.WriteLine("Contact removed successfully.");
-        }
-        else
-        {
-            Console.WriteLine("No contact was found.");
-        }
+        //if (_contactService.RemoveContactFromList(emailToRemove))
+        //{
+        //    Console.WriteLine("Contact removed successfully.");
+        //}
+        //else
+        //{
+        //    Console.WriteLine("No contact was found.");
+        //}
 
         Console.WriteLine();
         Console.WriteLine("Press enter to continue...");

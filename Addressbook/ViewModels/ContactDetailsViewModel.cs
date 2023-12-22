@@ -19,25 +19,7 @@ public partial class ContactDetailsViewModel : ObservableObject
     [RelayCommand]
     private void GetContactFromList()
     {
-        _contactService.GetContactFromList();
+        _contactService.GetContactFromList("");
         
-    }
-
-    [RelayCommand]
-    private async Task NavigateToUpdate(IContact contact)
-    {
-        var parameters = new ShellNavigationQueryParameters
-        {
-            
-        };
-        await Shell.Current.GoToAsync("UpdateContactPage");
-    }
-    //RemoveCommand, navigate to UpdateContact, get and show a specific contact
-
-    [RelayCommand]
-    private void RemoveContactFromList(IContact contact)
-    {
-        _contactService.RemoveContactFromList(contact);
-        ContactDetails =
     }
 }

@@ -11,14 +11,14 @@
     <VerticalStackLayout Margin="20">
         <Label Text="Contact" VerticalOptions="Center" VerticalTextAlignment="Center" />
 
-        <Entry Placeholder="First name" Text="{Binding GetContactFromList.FirstName}"/>
-        <Entry Placeholder="Last name" Text="{Binding GetContactFromList.LastName}"/>
-        <Entry Placeholder="Phone number" Text="{Binding GetContactFromList.PhoneNumber}"/>
-        <Entry Placeholder="Email" Text="{Binding GetContactFromList.Email}"/>
-        <Entry Placeholder="Address" Text="{Binding GetContactFromList.Address}"/>
-        <Entry Placeholder="Postal code" Text="{Binding GetContactFromList.PostalCode}"/>
-        <Entry Placeholder="City" Text="{Binding GetContactFromList.City}"/>
+        <Label Text="{Binding GetContactFromList.FirstName}"/>
+        <Label Text="{Binding GetContactFromList.LastName}"/>
+        <Label Text="{Binding GetContactFromList.PhoneNumber}"/>
+        <Label Text="{Binding GetContactFromList.Email}"/>
+        <Label Text="{Binding GetContactFromList.Address}"/>
+        <Label Text="{Binding GetContactFromList.PostalCode}"/>
+        <Label Text="{Binding GetContactFromList.City}"/>
         
-        <Button Text="Delete contact" Command="{Binding RemoveContactFromListCommand}" Margin="0,10,0,0" />
+        <Button Text="Go back to contactlist" Command="{Binding NavigatetoContactListCommand}" Margin="0,10,0,0" />
     </VerticalStackLayout>
 </ContentPage>

@@ -45,7 +45,7 @@ public partial class ContactListViewModel : ObservableObject
     {
         var parameters = new ShellNavigationQueryParameters
         {
-            { "Contact", contact }
+            { "ContactInfo", contact }
         };
 
         await Shell.Current.GoToAsync("UpdateContactPage", parameters);

@@ -28,6 +28,6 @@ public partial class UpdateContactViewModel : ObservableObject, IQueryAttributab
 
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {
-        UpdateContactForm = (query["Contact"] as IContact);
+        UpdateContactForm = (query["ContactInfo"] as IContact);
     }
 }

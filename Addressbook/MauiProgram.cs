@@ -32,7 +32,7 @@ namespace Addressbook
             builder.Services.AddSingleton<UpdateContactViewModel>();
 
             builder.Services.AddSingleton<IContactService, ContactService>();
-            builder.Services.AddSingleton<IFileService, FileService>();
+            builder.Services.AddSingleton<IFileService>(new FileService(@"D:\Education\csharp\assignment\contactfile.json"));
 
 #if DEBUG
     		builder.Logging.AddDebug();

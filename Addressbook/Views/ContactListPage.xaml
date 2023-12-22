@@ -9,6 +9,7 @@
              
              x:Class="Addressbook.Views.ContactListPage"
              Title="Contact List">
+    
 
     <Grid RowDefinitions="auto, *" Margin="20">
 

@@ -29,7 +29,7 @@ public class FileService(string filepath) : IFileService
             {
                 existingContent = existingContent.Replace(contact, string.Empty).Trim();
 
-                File.WriteAllText(filepath, existingContent);
+                File.WriteAllText(_filepath, existingContent);
 
                 return true;
             }

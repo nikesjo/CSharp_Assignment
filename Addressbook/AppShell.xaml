@@ -10,9 +10,9 @@
     Shell.FlyoutBehavior="Disabled"
     Title="Addressbook">
 
-    <ShellContent Title="Contact List" Route="ContactListPage" ContentTemplate="{DataTemplate views.ContactListPage}" />
-    <ShellContent Title="Add Contact" Route="AddContactPage" ContentTemplate="{DataTemplate views.AddContactPage}" />
-    <ShellContent Title="Contact Details" Route="ContactDetailsPage" ContentTemplate="{DataTemplate views.ContactDetailsPage}" />
-    <ShellContent Title="Update Contact" Route="UpdateContactPage" ContentTemplate="{DataTemplate views.UpdateContactPage}" />
+    <ShellContent Title="Contact List" ContentTemplate="{DataTemplate views:ContactListPage}" Route="ContactListPage" />
+    <ShellContent Title="Add Contact" ContentTemplate="{DataTemplate views:AddContactPage}" Route="AddContactPage" />
+    <ShellContent Title="Contact Details" ContentTemplate="{DataTemplate views:ContactDetailsPage}" Route="ContactDetailsPage" />
+    <ShellContent Title="Update Contact" ContentTemplate="{DataTemplate views:UpdateContactPage}" Route="UpdateContactPage" />
 
 </Shell>

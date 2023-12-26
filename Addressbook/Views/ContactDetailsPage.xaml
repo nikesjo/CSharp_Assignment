@@ -19,6 +19,6 @@
         <Label Text="{Binding ContactDetails.PostalCode}"/>
         <Label Text="{Binding ContactDetails.City}"/>
         
-        <Button Text="Go back to contactlist" Command="{Binding NavigatetoContactListCommand}" Margin="0,10,0,0" />
+        <!--<Button Text="Go back to contactlist" Command="{Binding NavigatetoContactListCommand}" Margin="0,10,0,0" />-->
     </VerticalStackLayout>
 </ContentPage>

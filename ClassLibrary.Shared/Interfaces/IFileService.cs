@@ -1,4 +1,6 @@
-﻿namespace ClassLibrary.Shared.Interfaces;
+﻿using ClassLibrary.Shared.Models;
+
+namespace ClassLibrary.Shared.Interfaces;
 
 public interface IFileService
 {
@@ -24,4 +26,6 @@ public interface IFileService
     /// <param name="contact">Enter the contact as a string.</param>
     /// <returns>Returns true if contact was removed, or false if failed.</returns>
     bool RemoveContactFromFile(string contact);
+
+    bool UpdateContactListToFile(List<IContact> contact);
 }

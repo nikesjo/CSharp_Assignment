@@ -8,7 +8,7 @@ using Microsoft.Extensions.Hosting;
 
 var builder = Host.CreateDefaultBuilder().ConfigureServices(services =>
 {
-    services.AddSingleton<IFileService, FileService>();
+    services.AddSingleton<IFileService>(new FileService(@"D:\Education\csharp\assignment\contactfile.json"));
     services.AddSingleton<IContactService, ContactService>();
     services.AddSingleton<IMenuService, MenuService>();
 }).Build();

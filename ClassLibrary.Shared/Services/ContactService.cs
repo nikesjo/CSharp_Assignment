@@ -1,4 +1,5 @@
 ﻿using ClassLibrary.Shared.Interfaces;
+using ClassLibrary.Shared.Models;
 using Newtonsoft.Json;
 using System.Diagnostics;
 
@@ -7,15 +8,17 @@ namespace ClassLibrary.Shared.Services;
 
 public class ContactService : IContactService
 {
+    private List<IContact> _contacts;
     private readonly IFileService _fileService;
 
     public ContactService(IFileService fileService)
     {
+        _contacts = new List<IContact>();
         _fileService = fileService;
     }
 
-    private List<IContact> _contacts = [];
-    private readonly string _filepath = @"D:\Education\csharp\assignment\contactfile.json";
+    
+    //private readonly string _filepath = @"D:\Education\csharp\assignment\contactfile.json";
 
     public event EventHandler? ContactsUpdated;
 
@@ -29,7 +32,7 @@ public class ContactService : IContactService
                 ContactsUpdated?.Invoke(this, EventArgs.Empty);
                 string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, Formatting = Formatting.Indented });
 
-                var result = _fileService.SaveContactToFile(_filepath, json);
+                var result = _fileService.SaveContactToFile(json);
                 return result;
             }
         }
@@ -54,7 +57,7 @@ public class ContactService : IContactService
     {
         try
         {
-            var content = _fileService.GetContentFromFile(_filepath);
+            var content = _fileService.GetContentFromFile();
             if (!string.IsNullOrEmpty(content))
             {
                 _contacts = JsonConvert.DeserializeObject<List<IContact>>(content, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All })!;
@@ -92,9 +95,9 @@ public class ContactService : IContactService
 
                 string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
 
-                var result = _fileService.SaveContactToFile(_filepath, json);
+                var result = _fileService.SaveContactToFile(json);
 
-                _fileService.RemoveContactFromFile(_filepath, JsonConvert.SerializeObject(contactToRemove, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, Formatting = Formatting.Indented }));
+                _fileService.RemoveContactFromFile(JsonConvert.SerializeObject(contactToRemove, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, Formatting = Formatting.Indented }));
 
                 ContactsUpdated?.Invoke(this, EventArgs.Empty);
                 //return result;

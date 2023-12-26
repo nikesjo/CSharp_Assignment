@@ -3,26 +3,28 @@ using System.Diagnostics;
 
 namespace ClassLibrary.Shared.Services;
 
-public class FileService : IFileService
+public class FileService(string filepath) : IFileService
 {
-    public string GetContentFromFile(string filepath)
+    private readonly string _filepath = filepath;
+
+    public string GetContentFromFile()
     {
         try
         {
-            if (File.Exists(filepath))
+            if (File.Exists(_filepath))
             {
-                return File.ReadAllText(filepath);
+                return File.ReadAllText(_filepath);
             }
         }
         catch (Exception ex) { Debug.WriteLine(ex.Message); }
         return null!;
     }
 
-    public bool RemoveContactFromFile(string filepath, string contact)
+    public bool RemoveContactFromFile(string contact)
     {
         try
         {
-            var existingContent = GetContentFromFile(filepath);
+            string existingContent = GetContentFromFile();
             if (existingContent != null)
             {
                 existingContent = existingContent.Replace(contact, string.Empty).Trim();
@@ -36,11 +38,11 @@ public class FileService : IFileService
         return false;
     }
 
-    public bool SaveContactToFile(string filepath, string contact)
+    public bool SaveContactToFile(string contact)
     {
         try
         {
-            using var sw = new StreamWriter(filepath);
+            using var sw = new StreamWriter(_filepath);
             sw.WriteLine(contact);
             return true;
         }

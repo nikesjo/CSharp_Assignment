@@ -40,6 +40,16 @@ public partial class ContactListViewModel : ObservableObject
         await Shell.Current.GoToAsync("ContactDetailsPage");
     }
 
+    //[RelayCommand]
+    //private async Task NavigateToContactDetails(IContact contact)
+    //{
+    //    var parameters = new ShellNavigationQueryParameters
+    //    {
+    //        { "ContactInfo", contact }
+    //    };
+    //    await Shell.Current.GoToAsync("ContactDetailsPage", parameters);
+    //}
+
     [RelayCommand]
     private async Task NavigateToUpdateContact(IContact contact)
     {

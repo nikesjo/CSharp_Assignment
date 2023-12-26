@@ -11,13 +11,13 @@
     <VerticalStackLayout Margin="20">
         <Label Text="Contact" VerticalOptions="Center" VerticalTextAlignment="Center" />
 
-        <Label Text="{Binding GetContactFromList.FirstName}"/>
-        <Label Text="{Binding GetContactFromList.LastName}"/>
-        <Label Text="{Binding GetContactFromList.PhoneNumber}"/>
-        <Label Text="{Binding GetContactFromList.Email}"/>
-        <Label Text="{Binding GetContactFromList.Address}"/>
-        <Label Text="{Binding GetContactFromList.PostalCode}"/>
-        <Label Text="{Binding GetContactFromList.City}"/>
+        <Label Text="{Binding ContactDetails.FirstName}"/>
+        <Label Text="{Binding ContactDetails.LastName}"/>
+        <Label Text="{Binding ContactDetails.PhoneNumber}"/>
+        <Label Text="{Binding ContactDetails.Email}"/>
+        <Label Text="{Binding ContactDetails.Address}"/>
+        <Label Text="{Binding ContactDetails.PostalCode}"/>
+        <Label Text="{Binding ContactDetails.City}"/>
         
         <Button Text="Go back to contactlist" Command="{Binding NavigatetoContactListCommand}" Margin="0,10,0,0" />
     </VerticalStackLayout>

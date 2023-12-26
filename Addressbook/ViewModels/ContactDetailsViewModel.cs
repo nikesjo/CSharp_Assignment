@@ -17,9 +17,20 @@ public partial class ContactDetailsViewModel : ObservableObject
     private IContact? _contactDetails;
 
     [RelayCommand]
-    private void GetContactFromList()
+    private void GetContactFromList(string email)
     {
-        _contactService.GetContactFromList("");
-        
+        _contactService.GetContactFromList(email);
     }
+
+    //[RelayCommand]
+    //private void GetContactFromList(string email)
+    //{
+    //    _contactService.GetContactFromList(ContactDetails!);
+    //    ContactDetails
+        
+    //}
+    //public void ApplyQueryAttributes(IDictionary<string, object> query)
+    //{
+    //    ContactDetails = query[Contact as IContact];
+    //}
 }

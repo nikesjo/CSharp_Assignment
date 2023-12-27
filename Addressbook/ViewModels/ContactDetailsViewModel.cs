@@ -22,16 +22,16 @@ public partial class ContactDetailsViewModel : ObservableObject
     //    _contactService.GetContactFromList(email);
     //}
 
-    [RelayCommand]
-    private void GetContactFromList(string email)
-    {
-        _contactService.GetContactFromList(ContactDetails!);
-        ContactDetails
+    //[RelayCommand]
+    //private void GetContactFromList(string email)
+    //{
+    //    _contactService.GetContactFromList(ContactDetails!);
+    //    ContactDetails
 
 
-    }
-    public void ApplyQueryAttributes(IDictionary<string, object> query)
-    {
-        ContactDetails = query["ContactInfo" as IContact];
-    }
+    //}
+    //public void ApplyQueryAttributes(IDictionary<string, object> query)
+    //{
+    //    ContactDetails = query["ContactInfo" as IContact];
+    //}
 }

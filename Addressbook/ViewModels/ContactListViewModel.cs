@@ -22,7 +22,16 @@ public partial class ContactListViewModel : ObservableObject
 
     private void UpdateContactList()
     {
-        ContactList = new ObservableCollection<IContact>(_contactService.GetContactsFromList());
+        var contactsResult = _contactService.GetContactsFromList();
+
+        if (contactsResult != null)
+        {
+            ContactList = new ObservableCollection<IContact>(_contactService.GetContactsFromList());
+        }
+        else
+        {
+            ContactList = [];
+        }
     }
 
     [ObservableProperty]

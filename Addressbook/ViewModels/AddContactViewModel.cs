@@ -15,12 +15,12 @@ public partial class AddContactViewModel : ObservableObject
     }
 
     [ObservableProperty]
-    private IContact? _addContactForm;
+    private IContact _addContactForm = new Contact();
 
     [RelayCommand]
     private async Task AddContactToList()
     {
-        _contactService.AddContactToList(AddContactForm!);
+        _contactService.AddContactToList(AddContactForm);
         AddContactForm = new Contact();
 
         await Shell.Current.GoToAsync("..");

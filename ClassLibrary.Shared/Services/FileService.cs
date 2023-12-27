@@ -26,10 +26,8 @@ public class FileService(string filepath) : IFileService
     {
         try
         {
-            using (var sw = new StreamWriter(_filepath))
-            {
-                sw.WriteLine(contact);
-            }
+            using var sw = new StreamWriter(_filepath);
+            sw.WriteLine(contact);
 
             return true;
         }
@@ -42,11 +40,9 @@ public class FileService(string filepath) : IFileService
         try
         {
             var serializedContacts = JsonConvert.SerializeObject(contact, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects, Formatting = Formatting.Indented });
-            using (var sw = new StreamWriter(_filepath))
-            {
-                sw.Write(serializedContacts);
-            }
-                
+            using var sw = new StreamWriter(_filepath);
+            sw.WriteLine(serializedContacts);
+
             return true;
         }
         catch (Exception ex) { Debug.WriteLine(ex.Message); }

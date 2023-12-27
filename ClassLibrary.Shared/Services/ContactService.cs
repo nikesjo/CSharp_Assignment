@@ -2,6 +2,7 @@
 using ClassLibrary.Shared.Models;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 
 
 namespace ClassLibrary.Shared.Services;
@@ -16,9 +17,6 @@ public class ContactService : IContactService
         _contacts = new List<IContact>();
         _fileService = fileService;
     }
-
-    
-    //private readonly string _filepath = @"D:\Education\csharp\assignment\contactfile.json";
 
     public event EventHandler? ContactsUpdated;
 
@@ -76,34 +74,33 @@ public class ContactService : IContactService
             if (item != null)
             {
                 item = contact;
+                _fileService.UpdateContactListToFile(_contacts);
                 ContactsUpdated?.Invoke(this, EventArgs.Empty);
             }
         }
         catch (Exception ex) { Debug.WriteLine(ex.Message); }
     }
 
-    public void RemoveContactFromList(string email)
+    public bool RemoveContactFromList(string email)
     {
         try
         {
             GetContactsFromList();
-
+            //_contacts = JsonConvert.DeserializeObject<List<IContact>>(content, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All })!;
             var contactToRemove = _contacts.FirstOrDefault(x => x.Email == email);
             if (contactToRemove != null)
             {
                 _contacts.Remove(contactToRemove);
 
-                string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All });
+                //string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, Formatting = Formatting.Indented });
 
-                var result = _fileService.SaveContactToFile(json);
-
-                _fileService.RemoveContactFromFile(JsonConvert.SerializeObject(contactToRemove, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, Formatting = Formatting.Indented }));
-
+                var result = _fileService.UpdateContactListToFile(_contacts);
                 ContactsUpdated?.Invoke(this, EventArgs.Empty);
-                //return result;
+
+                return result;
             }
         }
         catch (Exception ex) { Debug.WriteLine(ex.Message); }
-        //return false;
+        return false;
     }
 }

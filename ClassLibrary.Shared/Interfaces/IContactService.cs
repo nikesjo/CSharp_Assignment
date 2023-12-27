@@ -22,14 +22,14 @@ public interface IContactService
     /// <returns>Return contact if exists, if contact does not exists return null.</returns>
     IContact GetContactFromList(string email);
 
-    public void UpdateContact(IContact contactUpdated);
+    void UpdateContact(IContact contact);
 
     /// <summary>
     /// Removes a contact from the contact list by email.
     /// </summary>
     /// <param name="email">Enter the email as a string.</param>
     /// <returns>Return true if the contact was successfully removed, or false if otherwise.</returns>
-    void RemoveContactFromList(string email);
+    bool RemoveContactFromList(string email);
 
     event EventHandler ContactsUpdated;
 }

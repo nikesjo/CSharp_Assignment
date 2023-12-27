@@ -19,13 +19,13 @@ public interface IFileService
     /// <returns>Returns file content as string if file exists, or returns null.</returns>
     string GetContentFromFile();
 
-    /// <summary>
-    /// Remove contact from file.
-    /// </summary>
-    /// <param name="filepath">Enter the filepath with extension (eg. d:\Education\csharp\assignment\myfile.json)</param>
-    /// <param name="contact">Enter the contact as a string.</param>
-    /// <returns>Returns true if contact was removed, or false if failed.</returns>
-    bool RemoveContactFromFile(string contact);
+    ///// <summary>
+    ///// Remove contact from file.
+    ///// </summary>
+    ///// <param name="filepath">Enter the filepath with extension (eg. d:\Education\csharp\assignment\myfile.json)</param>
+    ///// <param name="contact">Enter the contact as a string.</param>
+    ///// <returns>Returns true if contact was removed, or false if failed.</returns>
+    //bool RemoveContactFromFile(string contact);
 
     bool UpdateContactListToFile(List<IContact> contact);
 }

@@ -86,13 +86,11 @@ public class ContactService : IContactService
         try
         {
             GetContactsFromList();
-            //_contacts = JsonConvert.DeserializeObject<List<IContact>>(content, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All })!;
+
             var contactToRemove = _contacts.FirstOrDefault(x => x.Email == email);
             if (contactToRemove != null)
             {
                 _contacts.Remove(contactToRemove);
-
-                //string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, Formatting = Formatting.Indented });
 
                 var result = _fileService.UpdateContactListToFile(_contacts);
                 ContactsUpdated?.Invoke(this, EventArgs.Empty);

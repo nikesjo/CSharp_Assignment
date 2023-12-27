@@ -29,10 +29,10 @@ public class ContactService : IContactService
             if (!_contacts.Any(x => x.Email == contact.Email))
             {
                 _contacts.Add(contact);
-                ContactsUpdated?.Invoke(this, EventArgs.Empty);
                 string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, Formatting = Formatting.Indented });
 
                 var result = _fileService.SaveContactToFile(json);
+                ContactsUpdated?.Invoke(this, EventArgs.Empty);
                 return result;
             }
         }

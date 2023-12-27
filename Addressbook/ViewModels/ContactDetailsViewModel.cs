@@ -4,7 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Addressbook.ViewModels;
 
-public partial class ContactDetailsViewModel : ObservableObject
+public partial class ContactDetailsViewModel : ObservableObject, IQueryAttributable
 {
     private readonly IContactService _contactService;
 
@@ -17,9 +17,9 @@ public partial class ContactDetailsViewModel : ObservableObject
     private IContact? _contactDetails;
 
     [RelayCommand]
-    private void GetContactFromList(string email)
+    public void GetContactFromList()
     {
-        _contactService.GetContactFromList(email);
+        _contactService.GetContactFromList(ContactDetails!.Email);
     }
     public void ApplyQueryAttributes(IDictionary<string, object> query)
     {

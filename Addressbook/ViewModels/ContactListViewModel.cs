@@ -74,6 +74,6 @@ public partial class ContactListViewModel : ObservableObject
     private void RemoveContactFromList(IContact contact)
     {
         _contactService.RemoveContactFromList(contact.Email);
-        ContactList = new ObservableCollection<IContact>(_contactService.GetContactsFromList());
+        //ContactList = new ObservableCollection<IContact>(_contactService.GetContactsFromList());
     }
 }

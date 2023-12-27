@@ -43,12 +43,6 @@ public partial class ContactListViewModel : ObservableObject
         await Shell.Current.GoToAsync("AddContactPage");
     }
 
-    //[RelayCommand]
-    //private async Task NavigateToContactDetails(IContact contact)
-    //{
-    //    await Shell.Current.GoToAsync("ContactDetailsPage");
-    //}
-
     [RelayCommand]
     private async Task NavigateToContactDetails(IContact contact)
     {
@@ -74,6 +68,5 @@ public partial class ContactListViewModel : ObservableObject
     private void RemoveContactFromList(IContact contact)
     {
         _contactService.RemoveContactFromList(contact.Email);
-        //ContactList = new ObservableCollection<IContact>(_contactService.GetContactsFromList());
     }
 }

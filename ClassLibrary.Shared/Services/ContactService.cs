@@ -1,8 +1,6 @@
 ﻿using ClassLibrary.Shared.Interfaces;
-using ClassLibrary.Shared.Models;
 using Newtonsoft.Json;
 using System.Diagnostics;
-using System.Diagnostics.Contracts;
 
 
 namespace ClassLibrary.Shared.Services;

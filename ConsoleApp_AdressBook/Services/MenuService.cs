@@ -1,6 +1,5 @@
 ﻿using ClassLibrary.Shared.Interfaces;
 using ClassLibrary.Shared.Models;
-using ClassLibrary.Shared.Services;
 using ConsoleApp_AddressBook.Interfaces;
 
 namespace ConsoleApp_AddressBook.Services;

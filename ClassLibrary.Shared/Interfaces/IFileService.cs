@@ -8,7 +8,7 @@ public interface IFileService
     /// Save contact to a filepath.
     /// </summary>
     /// <param name="filepath">Enter the filepath with extension (eg. d:\Education\csharp\assignment\myfile.json)</param>
-    /// <param name="contact">Enter the contact as a string.</param>
+    /// <param name="contact">A contact of type IContact</param>
     /// <returns>Returns true if saved, or false if failed.</returns>
     bool SaveContactToFile(string contact);
 
@@ -19,13 +19,10 @@ public interface IFileService
     /// <returns>Returns file content as string if file exists, or returns null.</returns>
     string GetContentFromFile();
 
-    ///// <summary>
-    ///// Remove contact from file.
-    ///// </summary>
-    ///// <param name="filepath">Enter the filepath with extension (eg. d:\Education\csharp\assignment\myfile.json)</param>
-    ///// <param name="contact">Enter the contact as a string.</param>
-    ///// <returns>Returns true if contact was removed, or false if failed.</returns>
-    //bool RemoveContactFromFile(string contact);
-
+    /// <summary>
+    /// Updates contactlist to file. 
+    /// </summary>
+    /// <param name="contact">A contact of type IContact</param>
+    /// <returns>Returns true if contact was updated, ior false if failed.<</returns>
     bool UpdateContactListToFile(List<IContact> contact);
 }

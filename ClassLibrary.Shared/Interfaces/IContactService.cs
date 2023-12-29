@@ -22,6 +22,10 @@ public interface IContactService
     /// <returns>Return contact if exists, if contact does not exists return null.</returns>
     IContact GetContactFromList(string email);
 
+    /// <summary>
+    /// Updates existing contact in list.
+    /// </summary>
+    /// <param name="contact">A contact of type IContact</param>
     void UpdateContact(IContact contact);
 
     /// <summary>

@@ -25,7 +25,7 @@ public class ContactService : IContactService
             if (!_contacts.Any(x => x.Email == contact.Email))
             {
                 _contacts.Add(contact);
-                string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, Formatting = Formatting.Indented });
+                string json = JsonConvert.SerializeObject(_contacts, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects, Formatting = Formatting.Indented });
 
                 var result = _fileService.SaveContactToFile(json);
                 ContactsUpdated?.Invoke(this, EventArgs.Empty);
@@ -56,7 +56,7 @@ public class ContactService : IContactService
             var content = _fileService.GetContentFromFile();
             if (!string.IsNullOrEmpty(content))
             {
-                _contacts = JsonConvert.DeserializeObject<List<IContact>>(content, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All })!;
+                _contacts = JsonConvert.DeserializeObject<List<IContact>>(content, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Objects })!;
                 return _contacts;
             }
         }
